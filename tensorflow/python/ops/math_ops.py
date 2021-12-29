@@ -100,7 +100,7 @@ from tensorflow.python.util import traceback_utils
 from tensorflow.python.util.compat import collections_abc
 from tensorflow.python.util.lazy_loader import LazyLoader
 from tensorflow.python.util.tf_export import tf_export
-
+from tensorflow.python.yyd_wrapper import yyd_decorator
 
 np_dtypes = LazyLoader(
     "np_dtypes", globals(),
@@ -364,6 +364,7 @@ def argmin_v2(input, axis=None, output_type=dtypes.int64, name=None):
 @tf_export("math.abs", "abs")
 @dispatch.register_unary_elementwise_api
 @dispatch.add_dispatch_support
+@yyd_decorator
 def abs(x, name=None):  # pylint: disable=redefined-builtin
   r"""Computes the absolute value of a tensor.
 
@@ -445,6 +446,7 @@ class DivideDelegateWithName(object):
 @tf_export("math.divide", "divide")
 @dispatch.register_binary_elementwise_api
 @dispatch.add_dispatch_support
+@yyd_decorator
 def divide(x, y, name=None):
   """Computes Python style division of `x` by `y`.
 
@@ -480,6 +482,7 @@ def divide(x, y, name=None):
 @tf_export("math.multiply", "multiply")
 @dispatch.register_binary_elementwise_api
 @dispatch.add_dispatch_support
+@yyd_decorator
 def multiply(x, y, name=None):
   """Returns an element-wise x * y.
 
@@ -544,6 +547,7 @@ _mul.__doc__ = (
 @tf_export("math.subtract", "subtract")
 @dispatch.register_binary_elementwise_api
 @dispatch.add_dispatch_support
+@yyd_decorator
 def subtract(x, y, name=None):
   return gen_math_ops.sub(x, y, name)
 
@@ -3925,6 +3929,7 @@ def _as_indexed_slices_list(inputs, optimize=True):
 @tf_export("math.add", "add")
 @dispatch.register_binary_elementwise_api
 @dispatch.add_dispatch_support
+@yyd_decorator
 def add(x, y, name=None):
   """Returns x + y element-wise.
 

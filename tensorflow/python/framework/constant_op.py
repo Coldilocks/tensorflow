@@ -30,6 +30,7 @@ from tensorflow.python.framework import tensor_shape
 from tensorflow.python.framework import tensor_util
 from tensorflow.python.profiler import trace
 from tensorflow.python.util.tf_export import tf_export
+from tensorflow.python.yyd_wrapper import yyd_decorator
 
 
 def _eager_reshape(tensor, shape, ctx):
@@ -168,6 +169,7 @@ def constant_v1(
 
 
 @tf_export("constant", v1=[])
+@yyd_decorator
 def constant(value, dtype=None, shape=None, name="Const"):
   """Creates a constant tensor from a tensor-like object.
 
@@ -264,6 +266,7 @@ def constant(value, dtype=None, shape=None, name="Const"):
     TypeError: if shape is incorrectly specified or unsupported.
     ValueError: if called on a symbolic tensor.
   """
+  print('Hello! YYD')
   return _constant_impl(value, dtype, shape, name, verify_shape=False,
                         allow_broadcast=True)
 

@@ -14,6 +14,7 @@ def repo():
         sha256 = TFRT_SHA256,
         strip_prefix = "runtime-{commit}".format(commit = TFRT_COMMIT),
         urls = tf_mirror_urls("https://github.com/tensorflow/runtime/archive/{commit}.tar.gz".format(commit = TFRT_COMMIT)),
+        # "http://localhost:8088/runtime-c3e082762b7664bbc7ffd2c39e86464928e27c0c.tar.gz"
         # A patch file can be provided for atomic commits to both TF and TFRT.
         # The job that bumps the TFRT_COMMIT also resets patch_file to 'None'.
         patch_file = None,
